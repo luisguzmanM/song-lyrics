@@ -13,7 +13,7 @@ async function buscarCancion(e) {
     pintarLetraHTML(letra);
     UI.formularioBusqueda.reset();
   } else {
-    showMessage("Intenta con otra canción");
+    showMessage("try another song");
   }
 }
 
