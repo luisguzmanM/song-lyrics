@@ -7,17 +7,14 @@ async function buscarCancion(e) {
   e.preventDefault();
   const artista = document.querySelector("#artista").value;
   const cancion = document.querySelector("#cancion").value;
+  spinner()
   // Llamando a la api publica...
   const letra = await consultarApi(artista, cancion);
   if (letra) {
     pintarLetraHTML(letra);
     UI.formularioBusqueda.reset();
   } else {
-<<<<<<< HEAD
     showMessage("try another song");
-=======
-    showMessage("Try another song");
->>>>>>> gh-pages
   }
 }
 
@@ -39,11 +36,34 @@ export function showMessage(msj) {
   divMsj.textContent = msj;
 
   const mensajes = document.querySelector(".error");
-  if(!mensajes){
+  if (!mensajes) {
     UI.contenedorResultado.insertBefore(divMsj, UI.resultado);
   }
 
   setTimeout(() => {
     divMsj.remove();
   }, 2000)
+}
+
+export function spinner() {
+
+  limpiarHTML();
+
+  const divSpinner = document.createElement('div');
+  divSpinner.classList.add('sk-chase');
+  divSpinner.innerHTML = `
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+    <div class="sk-chase-dot"></div>
+  `;
+  UI.resultado.appendChild(divSpinner);
+}
+
+function limpiarHTML(){
+  while(UI.resultado.firstChild){
+    UI.resultado.removeChild(UI.resultado.firstChild);
+  }
 }
