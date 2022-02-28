@@ -13,7 +13,11 @@ async function buscarCancion(e) {
     pintarLetraHTML(letra);
     UI.formularioBusqueda.reset();
   } else {
+<<<<<<< HEAD
     showMessage("try another song");
+=======
+    showMessage("Try another song");
+>>>>>>> gh-pages
   }
 }
 
